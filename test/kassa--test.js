@@ -1,6 +1,6 @@
 import test from 'tape';
 
-import { checkMD5, generateHash } from '../index';
+import { checkMD5, generateHash } from '../src/kassa';
 
 test('generateHash', assert => {
   const validHash = '1B35ABE38AA54F2931B0C58646FD1321';

@@ -1,9 +1,10 @@
 {
   "name": "node-yandex-kassa",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Node.js utilities to integrate Yandex.Kassa with your app",
-  "main": "./index.js",
+  "main": "./dist/index.js",
   "scripts": {
+    "build": "babel -d ./dist ./src",
     "test": "babel-tape-runner test/*--test.js"
   },
   "repository": {
@@ -24,6 +25,7 @@
   },
   "homepage": "https://github.com/ZeroOneStudio/node-yandex-kassa#readme",
   "devDependencies": {
+    "babel": "^5.8.23",
     "babel-tape-runner": "^1.2.0",
     "tape": "^4.2.0"
   },
