@@ -2,10 +2,14 @@
   "name": "node-yandex-kassa",
   "version": "0.1.0",
   "description": "Node.js utilities to integrate Yandex.Kassa with your app",
-  "main": "./dist/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "babel -d ./dist ./src",
-    "test": "babel-tape-runner test/*--test.js"
+    "test": "babel-tape-runner test/*--test.js",
+    "publish": "git push --tags && npm publish"
+  },
+  "engines": {
+    "node": ">=0.10.0"
   },
   "repository": {
     "type": "git",
@@ -18,7 +22,7 @@
     "merchant",
     "api"
   ],
-  "author": "Michael Romanenko",
+  "author": "Michael Romanenko <michael@romanenko.kg> (http://github.com/romanenko)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ZeroOneStudio/node-yandex-kassa/issues"
