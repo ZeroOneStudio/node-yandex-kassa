@@ -1,6 +1,6 @@
 {
   "name": "node-yandex-kassa",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Node.js utilities to integrate Yandex.Kassa with your app",
   "main": "dist/index.js",
   "scripts": {

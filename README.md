@@ -1,6 +1,7 @@
 #node-yandex-kassa
 ---
 [![NPM Version](https://img.shields.io/npm/v/node-yandex-kassa.svg?style=flat)](https://www.npmjs.com/package/node-yandex-kassa)
+[![Build Status](https://img.shields.io/travis/ZeroOneStudio/node-yandex-kassa/master.svg?style=flat)](https://travis-ci.org/ZeroOneStudio/node-yandex-kassa)
 
 by [Zero One](http://www.zeroone.st)
 
