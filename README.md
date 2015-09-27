@@ -1,19 +1,30 @@
-## node-yandex-kassa
+#node-yandex-kassa
+---
+[![NPM Version](https://img.shields.io/npm/v/node-yandex-kassa.svg?style=flat)](https://www.npmjs.com/package/node-yandex-kassa)
+
 by [Zero One](http://www.zeroone.st)
 
 JavaScript utilities to integrate [Yandex.Kassa](https://kassa.yandex.ru/) payment API with your app
+
+## Installation
+
+```
+npm install --save node-yandex-kassa
+```
+
+## Usage
 
 Example usage with Express in route handler:
 
 ```javascript
 import { checkMD5, buildResponse } from 'node-yandex-kassa';
-const { KASSA_SHOP_ID } = process.env; // ... if you store such things there
+const { KASSA_SHOP_PASSWORD } = process.env; // ... if you store such things there
 
 app.post('/payments/check_order', (req, res, next) => {
   const { body } = req;
   const { invoiceId, shopId } = body;
 
-  if (!checkMD5(body, KASSA_SHOP_ID)) {
+  if (!checkMD5(body, KASSA_SHOP_PASSWORD)) {
   	return res.status(400).send('Validation of MD5 failed');
   }
 
@@ -31,13 +42,11 @@ app.post('/payments/check_order', (req, res, next) => {
 
 # Functions
 
-## checkMD5(requestBody, shopId)
+## checkMD5(requestBody, shopPassword)
 
 Returns `boolean`.
 
 Checks request body for valid `md5` param.
-
-`shopId` is given by Yandex.Kassa during registration.
 
 Requests are being made by Yandex.Kassa service and have standart format (with sample data):
 
