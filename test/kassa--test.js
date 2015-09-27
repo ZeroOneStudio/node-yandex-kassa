@@ -1,6 +1,6 @@
 import test from 'tape';
 
-import { checkMD5, generateHash } from '../lib/kassa';
+import { checkMD5, generateHash } from '../index';
 
 test('generateHash', assert => {
   const validHash = '1B35ABE38AA54F2931B0C58646FD1321';
@@ -38,7 +38,7 @@ test('CheckMD5', assert => {
   const invalidRequest = Object.assign({}, validRequest, { md5: 'blablabla'});
 
   assert.ok(checkMD5(validRequest, shopPassword), 'Should check for valid md5 request param');
-  assert.notOk(checkMD5(invalidRequest, shopPassword), 'Should be falsy if md5 not match valid hash');
+  assert.notOk(checkMD5(invalidRequest, shopPassword), 'Should be falsy if md5 does not match valid hash');
   assert.end();
 });
 

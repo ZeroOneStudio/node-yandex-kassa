@@ -2,7 +2,7 @@
   "name": "node-yandex-kassa",
   "version": "0.0.1",
   "description": "Node.js utilities to integrate Yandex.Kassa with your app",
-  "main": "index.js",
+  "main": "./index.js",
   "scripts": {
     "test": "babel-tape-runner test/*--test.js"
   },
