@@ -1,5 +1,5 @@
 #node-yandex-kassa
----
+
 [![NPM Version](https://img.shields.io/npm/v/node-yandex-kassa.svg?style=flat)](https://www.npmjs.com/package/node-yandex-kassa)
 [![Build Status](https://img.shields.io/travis/ZeroOneStudio/node-yandex-kassa.svg?style=flat)](https://travis-ci.org/ZeroOneStudio/node-yandex-kassa)
 
@@ -19,7 +19,7 @@ Example usage with Express in route handler:
 
 ```javascript
 import { checkMD5, buildResponse } from 'node-yandex-kassa';
-const { KASSA_SHOP_PASSWORD } = process.env; // ... if you store such things there
+const { KASSA_SHOP_PASSWORD } = process.env;
 
 app.post('/payments/check_order', (req, res, next) => {
   const { body } = req;
@@ -30,9 +30,8 @@ app.post('/payments/check_order', (req, res, next) => {
   }
 
   // ...
-  //
-  // Here you might validate request params (orderNumber of customerNumber, for example)
-  // if these parameters were passed to payment form
+  // Here you might validate request params (for example, `orderNumber` or
+  // `customerNumber`) if these parameters were passed to payment form
   // ...
 
   res.set('Content-Type', 'text/xml');
@@ -77,24 +76,38 @@ Returns `string`.
 
 Generates string with valid XML required by Yandex.Kassa API.
 
-Example of successful response:
+### Available status codes:
 
+| Code | Status |
+------ | ------ |
+| 0 | Success |
+| 1 | Authorization error |
+| 100 | Transaction denied (only for `checkOrder` action) |
+| 200 | Parse error |
+
+### Successful response example
+
+```javascript
+buildResponse('paymentAviso', 0, 13, 1234567);
+```
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<checkOrderResponse performedDatetime="2011-05-04T20:38:01.000+04:00"
+<paymentAvisoResponse performedDatetime="2011-05-04T20:38:01.000+04:00"
 code="0" invoiceId="1234567"
 shopId="13"/>
 ```
 
-Example of response with error:
+### Response with error example
 
+```javascript
+buildResponse('checkOrder', 100, 13, 1234567, 'Given customerNumber does not exist');
+```
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <checkOrderResponse performedDatetime="2011-05-04T20:38:01.000+04:00"
 code="100" invoiceId="1234567"
 shopId="13"
-message="Given customerNumber does not exist"
-techMessage="Wrong phone number"/>
+message="Given customerNumber does not exist"/>
 ```
 
 ### More docs coming soon
